@@ -1,0 +1,1334 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "92xjWEKeInDL"
+      },
+      "source": [
+        "# Python Recap\n",
+        "\n",
+        "## *Workshop 1*  [![Open In Colab](https://github.com/oballinger/QM2/blob/main/colab-badge.png?raw=1)](https://colab.research.google.com/github/oballinger/QM2/blob/main/notebooks/W01.%20Python%20Recap.ipynb)\n",
+        "\n",
+        "## Registering a GitHub account\n",
+        "\n",
+        "Before we get started, we need to set a few things up. GitHub is a platform for software development and version control using Git, allowing developers to store and manage their code. Think of it as google docs but for code-- it will be very useful for collaborating on your group projects later in the term, and in your future as a data analyst.\n",
+        "\n",
+        "1. Use [this link](https://github.com/join) to register for a GitHub account if you don't already have one.\n",
+        "2. Once that's done, [create a new github repository](https://github.com/new) called \"QM2\".\n",
+        "3. In this notebook, click \"File\" and then \"Save a copy in GitHub\".\n",
+        "\n",
+        "Voila! You now have a version of this notebook saved to your own GitHub account. *You will need to do step 3 for all the workshops!* Now, on to python.\n",
+        "\n",
+        "## Using Python\n",
+        "\n",
+        "In this course, we'll make extensive use of *Python*, a programming language used widely in scientific computing and on the web. We will be using Python as a way to manipulate, plot and analyse data. This isn't a course about learning Python, it's about working with data - but we'll learning a little bit of programming along the way.\n",
+        "\n",
+        "By now, you should have done the prerequisites for the module, and understand a bit about how Python is structured, what different commands do, and so on - this is a bit of a refresher to remind you of what we need at the beginning of term.\n",
+        "\n",
+        "The particular flavour of Python we're using is *iPython*, which, as we've seen, allows us to combine text, code, images, equations and figures in a *Notebook*. This is a *cell*, written in *markdown* - a way of writing nice text. Contrast this with *code* cell, which executes a bit of Python:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "S1siXLpdInDM",
+        "outputId": "0cc186d1-9160-43dc-bd44-eb66f8267edc"
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "4\n"
+          ]
+        }
+      ],
+      "source": [
+        "print(2+2)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "RUiPNXLiInDQ"
+      },
+      "source": [
+        "The Notebook format allows you to engage in what Don Knuth describes as [Literate Programming](http://en.wikipedia.org/wiki/Literate_programming):\n",
+        "\n",
+        "> […] Instead of writing code containing documentation, the literate programmer writes documentation containing code. No longer does the English commentary injected into a program have to be hidden in comment delimiters at the top of the file, or under procedure headings, or at the end of lines. Instead, it is wrenched into the daylight and made the main focus. The \"program\" then becomes primarily a document directed at humans, with the code being herded between \"code delimiters\" from where it can be extracted and shuffled out sideways to the language system by literate programming tools.\n",
+        "[Ross Williams][1]\n",
+        "\n",
+        "[1]: http://www.literateprogramming.com/lpquotes.html"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "NT4CsLCxInDQ"
+      },
+      "source": [
+        "Libraries\n",
+        "---------\n",
+        "\n",
+        "We will work with a number of *libraries*, which provide additional functions and techniques to help us to carry out our tasks.\n",
+        "\n",
+        "These include:\n",
+        "\n",
+        "*Pandas:* we'll use this a lot to slice and dice data\n",
+        "\n",
+        "*matplotlib*: this is our basic graphing software, and we'll also use it for mapping\n",
+        "\n",
+        "*nltk*: The Natural Language Tool Kit will help us work with text\n",
+        "\n",
+        "We aren't doing all this to learn to program. We could spend a whole term learning how to use Python and never look at any data, maps, graphs, or visualisations. But we do need to understand a few basics to use Python for working with data. So let's revisit a few concepts that you should have covered in your prerequisites."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "jm4XtcfaInDR"
+      },
+      "source": [
+        "Variables\n",
+        "---------\n",
+        "\n",
+        "Python can broadly be divided in verbs and nouns: things which *do* things, and things which *are* things. In Python, the verbs can be *commands*, *functions*, or *methods*. We won't worry too much about the distinction here - suffice it to say, they are the parts of code which manipulate data, calculate values, or show things on the screen.\n",
+        "\n",
+        "The simplest proper noun object in Python is the *variable*. Variables are given names and store information. This can be, for example, numeric, text, or boolean (true/false). These are all statements setting up variables:\n",
+        "\n",
+        "n = 1\n",
+        "\n",
+        "t = \"hi\"\n",
+        "\n",
+        "b = True\n",
+        "\n",
+        "Now let's try this in code:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "wbEBXSjyInDS"
+      },
+      "outputs": [],
+      "source": [
+        "n = 1\n",
+        "\n",
+        "t = \"hi\"\n",
+        "\n",
+        "b = True"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "KEHhTkQRInDX"
+      },
+      "source": [
+        "Note that each command is on a new line; other than that, the *syntax* of Python should be fairly clear. We're setting these variables equal to the letters and numbers and phrases and booleans. **What's a boolean?**\n",
+        "\n",
+        "The value of this is we now have values tied to these variables - so every time we want to use it, we can refer to the variable:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 2,
+      "metadata": {
+        "id": "mX21mc1GInDY",
+        "outputId": "e57e63fc-ffbe-4b1b-df61-47e4e668919e",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "1\n"
+          ]
+        }
+      ],
+      "source": [
+        "n = 1\n",
+        "print(n)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "H_i_d3GXInDb",
+        "outputId": "66d2ac01-d43a-410e-916c-e4d1da81ea5d"
+      },
+      "outputs": [
+        {
+          "data": {
+            "text/plain": [
+              "'hi'"
+            ]
+          },
+          "execution_count": 13,
+          "metadata": {},
+          "output_type": "execute_result"
+        }
+      ],
+      "source": [
+        "t"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "97crKLfSInDe",
+        "outputId": "2112c8eb-4e79-4e0f-cdae-3375d77e6c76"
+      },
+      "outputs": [
+        {
+          "data": {
+            "text/plain": [
+              "True"
+            ]
+          },
+          "execution_count": 14,
+          "metadata": {},
+          "output_type": "execute_result"
+        }
+      ],
+      "source": [
+        "b"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "3E8UNGUMInDh"
+      },
+      "source": [
+        "Because we've defined these variables in the early part of the notebook, we can use them later on."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "HwHT5mDBInDh"
+      },
+      "source": [
+        "***Advanced**: where do **classes** fit into this noun/verb picture of variables and commands?*"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "XTcrfSHQInDi"
+      },
+      "source": [
+        "Where is my data?\n",
+        "-----------------\n",
+        "\n",
+        "When we work in excel and text editors, we're used to seeing the data onscreen - and if we manipulate the data in some way (averaging or summing up), we see both the inputs and outputs on screen. The big difference in working with Python is that we don't see our variables all of the time, or the effect we're having on them. They're there in the background, but it's usually worth checking in on them from time to time, to see whether our processes are doing what we think they're doing.\n",
+        "\n",
+        "This is pretty easy to do - we can just type the variable name, or \"print(*variable name*)\":"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 5,
+      "metadata": {
+        "id": "rW3iJbkoInDk",
+        "outputId": "7362d9ad-abca-4e4b-c493-fd307eb2f57c",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "4\n",
+            "hi\n",
+            "True\n"
+          ]
+        }
+      ],
+      "source": [
+        "\n",
+        "t = \"hi\"\n",
+        "b = True\n",
+        "n = n+1\n",
+        "print(n)\n",
+        "print(t)\n",
+        "print(b)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "Z5tctl6AInDo"
+      },
+      "source": [
+        "Flow\n",
+        "----\n",
+        "\n",
+        "Python, in common with all programming languages, executes commands in a sequence - we might refer to this as the \"ineluctable march of the machines\", but it's more common referred to as the *flow* of the code (we'll use the word \"code\" a lot - it just means commands written in the programming language). In most cases, code just executes in the order it's written. This is true within each *cell* (each block of text in the notebook), and it's true when we execute the cells in order; that's why we can refer back to the variables we defined earlier:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "z_2Y9lctInDp",
+        "outputId": "e035e3bd-4eae-4ad8-a577-abe28736a0c4"
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "2\n"
+          ]
+        }
+      ],
+      "source": [
+        "print(n)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "DtVel6vZInDs"
+      },
+      "source": [
+        "If we make a change to one of these variables, say n:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "7ykZEOWTInDt"
+      },
+      "outputs": [],
+      "source": [
+        "n = 3"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "Ikdjeq60InDx"
+      },
+      "source": [
+        "and execute the above \"print n\" command, you'll see that it has changed n to 3. So if we go out of order, the obvious flow of the code is confused. For this reason, try to write your code so it executes in order, one cell at a time. At least for the moment, this will make it easier to follow the logic of what you're doing to data."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "QwExWMcdInDy"
+      },
+      "source": [
+        "*Advanced*: what happens to this flow when you write *functions* to automate common tasks?"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "8Y6m2F8pInDy"
+      },
+      "source": [
+        "***Exercise - Setting up variables***:\n",
+        "\n",
+        "\n",
+        "1. Create a new cell.\n",
+        "\n",
+        "2. Create the variables \"name\", and assign your name to it.\n",
+        "\n",
+        "3. Create a variable \"Python\" and assign a score out of 10 to how much you like Python.\n",
+        "\n",
+        "4. Create a variable \"prior\" and if you've used Python before, assign True; otherwise assign False to the variable\n",
+        "\n",
+        "5. Print these out to the screen"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 6,
+      "metadata": {
+        "id": "VdjbUdczJyqr",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "41fcb616-cb69-447a-b53e-fb0fba0c3bf9"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Roy\n",
+            "0\n",
+            "False\n"
+          ]
+        }
+      ],
+      "source": [
+        "name = \"Roy\"\n",
+        "Python = 0\n",
+        "prior = False\n",
+        "print(name)\n",
+        "print(Python)\n",
+        "print(prior)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "V1cvj5vOInDy"
+      },
+      "source": [
+        "Downloading Data\n",
+        "--------------------------\n",
+        "\n",
+        "Lets fetch the data we will be using for this session. There are two ways in which you can upload data to the Colab notebook. You can use the following code to upload a CSV or similar data file.\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "7Hqi7hA1KEGi"
+      },
+      "outputs": [],
+      "source": [
+        "from google.colab import files\n",
+        "uploaded = files.upload()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "bTj0JTk4J-yt"
+      },
+      "source": [
+        "Or you can use the following cell to fetch the data directly from the QM2 server.\n",
+        "\n",
+        "Let's create a folder that we can store all our data for this session"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "dJf-hrVaInDz"
+      },
+      "outputs": [],
+      "source": [
+        "!mkdir data"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "8x7inUgzInD1",
+        "outputId": "a31a3ce2-190e-4100-c98c-5f77ffba4e31"
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n",
+            "                                 Dload  Upload   Total   Spent    Left  Speed\n",
+            "100   203  100   203    0     0   2872      0 --:--:-- --:--:-- --:--:--  3029\n",
+            "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n",
+            "                                 Dload  Upload   Total   Spent    Left  Speed\n",
+            "100   297  100   297    0     0   1844      0 --:--:-- --:--:-- --:--:--  1879\n"
+          ]
+        }
+      ],
+      "source": [
+        "!mkdir ./data/wk1\n",
+        "!curl https://s3.eu-west-2.amazonaws.com/qm2/wk1/data.csv -o ./data/wk1/data.csv\n",
+        "!curl https://s3.eu-west-2.amazonaws.com/qm2/wk1/sample_group.csv -o ./data/wk1/sample_group.csv"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "ZpTwNZymInD5"
+      },
+      "source": [
+        "Storing and importing data\n",
+        "--------------------------\n",
+        "\n",
+        "Typically, data we look at won't be just one number, or one bit of text. Python has a lot of different ways of dealing with a bunch of numbers: for example, a list of values is called a **list**:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "xNJEZ5g1InD6",
+        "outputId": "790c2028-72a6-424c-e4ae-7e0ecd584ac4"
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "[1, 2, 3, 6, 9]\n"
+          ]
+        }
+      ],
+      "source": [
+        "listy = [1,2,3,6,9]\n",
+        "print(listy)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "w6LaLn3pInD-"
+      },
+      "source": [
+        "A set of values *linked* to an index (or key) is called a **dictionary**; for example:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "McspnzcDInD_",
+        "outputId": "3762e43a-66fe-473d-c808-20fcf407179e"
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "{'Bob': 1.2, 'Mike': 1.2, 'Coop': 1.1, 'Maddy': 1.3, 'Giant': 2.1}\n"
+          ]
+        }
+      ],
+      "source": [
+        "dicty = {'Bob': 1.2, 'Mike': 1.2, 'Coop': 1.1, 'Maddy': 1.3, 'Giant': 2.1}\n",
+        "print(dicty)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "nKd_aimvInEC"
+      },
+      "source": [
+        "Notice that the list uses square brackets with values separated by commas, and the dict uses curly brackets with pairs separated by commas, and colons (:) to link a *key* (index or address) with a value.\n",
+        "\n",
+        "(You might notice that they haven't printed out in the order you entered them)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "ynwZr-GaInEC"
+      },
+      "source": [
+        "***Advanced**: Print out 1) The third element of **listy**, and 2) The element of **dicty** relating to Giant"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 8,
+      "metadata": {
+        "id": "q7iWJ5X9InED",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "1ffbd26f-6c32-4efa-c391-f78bc3799fe6"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "7\n",
+            "6.7\n"
+          ]
+        }
+      ],
+      "source": [
+        "listy = [6,7]\n",
+        "dicty = {'Giant': 6.7, 'lol': 7.6} # Corrected to use curly braces for dictionary\n",
+        "print(listy[1]) # Corrected to use square brackets for list indexing\n",
+        "print(dicty['Giant']) # Corrected to use square brackets for dictionary key access"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "1Q3hnEfDInEG"
+      },
+      "source": [
+        "We'll discuss different ways of organising data again soon, but for now we'll look at *dataframes* - the way our data-friendly *library* **Pandas** works with data. We'll be using Pandas a lot this term, so it's good to get started with it early.\n",
+        "\n",
+        "Let's start by importing pandas. We'll also import another library, but we're not going to worry about that too much at the moment.  \n",
+        "\n",
+        "If you see a warning about 'Building Font Cache' don't worry - this is normal."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 11,
+      "metadata": {
+        "id": "-ZSM3GvqInEG",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 601
+        },
+        "outputId": "95bbfb4a-2ad3-4c56-a51a-7ab9b684cba1"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "mkdir: cannot create directory ‘./data/wk1’: No such file or directory\n",
+            "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n",
+            "                                 Dload  Upload   Total   Spent    Left  Speed\n",
+            "  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0Warning: Failed to create the file ./data/wk1/data.csv: No such file or \n",
+            "Warning: directory\n",
+            "100   203  100   203    0     0    221      0 --:--:-- --:--:-- --:--:--   222\n",
+            "curl: (23) Failure writing output to destination\n",
+            "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n",
+            "                                 Dload  Upload   Total   Spent    Left  Speed\n",
+            "  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0Warning: Failed to create the file ./data/wk1/sample_group.csv: No such file \n",
+            "Warning: or directory\n",
+            "100   297  100   297    0     0    358      0 --:--:-- --:--:-- --:--:--   358\n",
+            "curl: (23) Failure writing output to destination\n"
+          ]
+        },
+        {
+          "output_type": "error",
+          "ename": "FileNotFoundError",
+          "evalue": "[Errno 2] No such file or directory: './data/wk1/data.csv'",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mFileNotFoundError\u001b[0m                         Traceback (most recent call last)",
+            "\u001b[0;32m/tmp/ipython-input-1728469781.py\u001b[0m in \u001b[0;36m<cell line: 0>\u001b[0;34m()\u001b[0m\n\u001b[1;32m      5\u001b[0m \u001b[0;32mimport\u001b[0m \u001b[0mmatplotlib\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      6\u001b[0m \u001b[0mget_ipython\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mrun_line_magic\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'matplotlib'\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m'inline'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 7\u001b[0;31m \u001b[0mdata\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mpandas\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mread_csv\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'./data/wk1/data.csv'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      8\u001b[0m \u001b[0mdata\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mhead\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m/usr/local/lib/python3.12/dist-packages/pandas/io/parsers/readers.py\u001b[0m in \u001b[0;36mread_csv\u001b[0;34m(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)\u001b[0m\n\u001b[1;32m   1024\u001b[0m     \u001b[0mkwds\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mupdate\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mkwds_defaults\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1025\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m-> 1026\u001b[0;31m     \u001b[0;32mreturn\u001b[0m \u001b[0m_read\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mfilepath_or_buffer\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mkwds\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m   1027\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1028\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m/usr/local/lib/python3.12/dist-packages/pandas/io/parsers/readers.py\u001b[0m in \u001b[0;36m_read\u001b[0;34m(filepath_or_buffer, kwds)\u001b[0m\n\u001b[1;32m    618\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    619\u001b[0m     \u001b[0;31m# Create the parser.\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 620\u001b[0;31m     \u001b[0mparser\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mTextFileReader\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mfilepath_or_buffer\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m**\u001b[0m\u001b[0mkwds\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    621\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    622\u001b[0m     \u001b[0;32mif\u001b[0m \u001b[0mchunksize\u001b[0m \u001b[0;32mor\u001b[0m \u001b[0miterator\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m/usr/local/lib/python3.12/dist-packages/pandas/io/parsers/readers.py\u001b[0m in \u001b[0;36m__init__\u001b[0;34m(self, f, engine, **kwds)\u001b[0m\n\u001b[1;32m   1618\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1619\u001b[0m         \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mhandles\u001b[0m\u001b[0;34m:\u001b[0m \u001b[0mIOHandles\u001b[0m \u001b[0;34m|\u001b[0m \u001b[0;32mNone\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;32mNone\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m-> 1620\u001b[0;31m         \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m_engine\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m_make_engine\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mf\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mengine\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m   1621\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1622\u001b[0m     \u001b[0;32mdef\u001b[0m \u001b[0mclose\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m)\u001b[0m \u001b[0;34m->\u001b[0m \u001b[0;32mNone\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m/usr/local/lib/python3.12/dist-packages/pandas/io/parsers/readers.py\u001b[0m in \u001b[0;36m_make_engine\u001b[0;34m(self, f, engine)\u001b[0m\n\u001b[1;32m   1878\u001b[0m                 \u001b[0;32mif\u001b[0m \u001b[0;34m\"b\"\u001b[0m \u001b[0;32mnot\u001b[0m \u001b[0;32min\u001b[0m \u001b[0mmode\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1879\u001b[0m                     \u001b[0mmode\u001b[0m \u001b[0;34m+=\u001b[0m \u001b[0;34m\"b\"\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m-> 1880\u001b[0;31m             self.handles = get_handle(\n\u001b[0m\u001b[1;32m   1881\u001b[0m                 \u001b[0mf\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1882\u001b[0m                 \u001b[0mmode\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m/usr/local/lib/python3.12/dist-packages/pandas/io/common.py\u001b[0m in \u001b[0;36mget_handle\u001b[0;34m(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)\u001b[0m\n\u001b[1;32m    871\u001b[0m         \u001b[0;32mif\u001b[0m \u001b[0mioargs\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mencoding\u001b[0m \u001b[0;32mand\u001b[0m \u001b[0;34m\"b\"\u001b[0m \u001b[0;32mnot\u001b[0m \u001b[0;32min\u001b[0m \u001b[0mioargs\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mmode\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    872\u001b[0m             \u001b[0;31m# Encoding\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 873\u001b[0;31m             handle = open(\n\u001b[0m\u001b[1;32m    874\u001b[0m                 \u001b[0mhandle\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    875\u001b[0m                 \u001b[0mioargs\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mmode\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mFileNotFoundError\u001b[0m: [Errno 2] No such file or directory: './data/wk1/data.csv'"
+          ]
+        }
+      ],
+      "source": [
+        "!mkdir ./data/wk1\n",
+        "!curl https://s3.eu-west-2.amazonaws.com/qm2/wk1/data.csv -o ./data/wk1/data.csv\n",
+        "!curl https://s3.eu-west-2.amazonaws.com/qm2/wk1/sample_group.csv -o ./data/wk1/sample_group.csv\n",
+        "import pandas\n",
+        "import matplotlib\n",
+        "%matplotlib inline\n",
+        "data = pandas.read_csv('./data/wk1/data.csv')\n",
+        "data.head()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "AhOFPn8sInEJ"
+      },
+      "source": [
+        "Let's import a simple dataset and show it in pandas. We'll use a pre-prepared \".csv\" file, which needs to be in the same folder as our code."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 9,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 167
+        },
+        "id": "zApWGKanInEJ",
+        "outputId": "090d735f-9c2e-43ac-8fba-a0ba94280a3e"
+      },
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "NameError",
+          "evalue": "name 'pandas' is not defined",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m/tmp/ipython-input-807681992.py\u001b[0m in \u001b[0;36m<cell line: 0>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mdata\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mpandas\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mread_csv\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'./data/wk1/data.csv'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      2\u001b[0m \u001b[0mdata\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mhead\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mNameError\u001b[0m: name 'pandas' is not defined"
+          ]
+        }
+      ],
+      "source": [
+        "data = pandas.read_csv('./data/wk1/data.csv')\n",
+        "data.head()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "iIO-rbSrbPyH"
+      },
+      "source": [
+        "What we've done here is read in a .csv file into a dataframe, the object pandas uses to work with data, and one that has lots of methods for slicing and dicing data, as we will see over the coming weeks. The head() command tells iPython to show the first few columns/rows of the data, so we can start to get a sense of what the data looks like and what sort of type of objects is represents."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "coZ9wTrf0Ocd"
+      },
+      "source": [
+        "A common first step for exploring our data is to sort it. In Pandas, this can be done easily with the `sort_values()` function. We can specify which column to sort the data by, and whether we want to sort in ascending or descending order, using the optional arguments `by` and `ascending`, respectively. In the example below, we're sorting in *descending* order of height:"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "8wijKcab0Ocd",
+        "outputId": "ab460449-1c0f-43af-c4d2-9d5c92f4e31a"
+      },
+      "outputs": [
+        {
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>Name</th>\n",
+              "      <th>First Appearance</th>\n",
+              "      <th>Approx height</th>\n",
+              "      <th>Gender</th>\n",
+              "      <th>Law Enforcement</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>Giant</td>\n",
+              "      <td>2.1</td>\n",
+              "      <td>7.5</td>\n",
+              "      <td>Male</td>\n",
+              "      <td>False</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>Bob</td>\n",
+              "      <td>1.2</td>\n",
+              "      <td>6.0</td>\n",
+              "      <td>Male</td>\n",
+              "      <td>False</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>Coop</td>\n",
+              "      <td>1.1</td>\n",
+              "      <td>6.0</td>\n",
+              "      <td>Male</td>\n",
+              "      <td>True</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>Mike</td>\n",
+              "      <td>1.2</td>\n",
+              "      <td>5.5</td>\n",
+              "      <td>Male</td>\n",
+              "      <td>False</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>Maddy</td>\n",
+              "      <td>1.3</td>\n",
+              "      <td>5.5</td>\n",
+              "      <td>Female</td>\n",
+              "      <td>False</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "    Name  First Appearance  Approx height  Gender  Law Enforcement\n",
+              "4  Giant               2.1            7.5    Male            False\n",
+              "0    Bob               1.2            6.0    Male            False\n",
+              "2   Coop               1.1            6.0    Male             True\n",
+              "1   Mike               1.2            5.5    Male            False\n",
+              "3  Maddy               1.3            5.5  Female            False"
+            ]
+          },
+          "execution_count": 14,
+          "metadata": {},
+          "output_type": "execute_result"
+        }
+      ],
+      "source": [
+        "data.sort_values(by='Approx height', ascending=False).head()"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "SYT8xvlYaimE"
+      },
+      "source": [
+        "# Supplementary: Kaggle exercises\n",
+        "\n",
+        "If you've gotten this far, congratulations! To further hone your skills, try working your way through the five [intro to programming notebooks on Kaggle](https://www.kaggle.com/learn/intro-to-programming). These cover a range of skills that we'll be using throughout the term. Kaggle is a very useful resource for learning data science, so making an account may not be a bad idea!"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "Ec-5N10J0Ocd"
+      },
+      "source": [
+        "# Assessed Question\n",
+        "\n",
+        "The URL below contains a dataset of the most streamed songs on spotify in 2023:\n",
+        "https://storage.googleapis.com/qm2/wk1/spotify-2023.csv\n",
+        "\n",
+        "Note that the file may have been corrupted over the years of running BASC0005; some column names might have been switched around, so make sure to sense check your results.\n",
+        "\n",
+        "QUESTION: How many streams does the most danceable song in the dataset have?\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 15,
+      "metadata": {
+        "id": "KkAOHZN-0Ocd",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 361
+        },
+        "outputId": "3a68536a-9123-4039-baa5-67c76641cec7"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n",
+            "                                 Dload  Upload   Total   Spent    Left  Speed\n",
+            "100  105k  100  105k    0     0   189k      0 --:--:-- --:--:-- --:--:--  188k\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "                                   track_name  \\\n",
+              "456                                     Lover   \n",
+              "881                 We Don't Talk About Bruno   \n",
+              "421                                Last Night   \n",
+              "376  It's the Most Wonderful Time of the Year   \n",
+              "856                         Until I Found You   \n",
+              "\n",
+              "                                        artist(s)_name  artist_count  \\\n",
+              "456                                       Taylor Swift             1   \n",
+              "881  Adassa, Mauro Castillo, Stephanie Beatriz, Enc...             7   \n",
+              "421                                      Morgan Wallen             1   \n",
+              "376                                      Andy Williams             1   \n",
+              "856                                    Stephen Sanchez             1   \n",
+              "\n",
+              "     released_year  released_month  released_day  in_spotify_playlists  \\\n",
+              "456           2012               1             1                  8448   \n",
+              "881           2021              11            19                  2785   \n",
+              "421           2023               1            31                  2420   \n",
+              "376           1963              10            14                  8879   \n",
+              "856           2021               9             1                  4427   \n",
+              "\n",
+              "     in_spotify_charts        bpm  in_apple_playlists  ...  streams  key  \\\n",
+              "456                 23  882831184                 160  ...      206    G   \n",
+              "881                  0  432719968                  95  ...      206  NaN   \n",
+              "421                 19  429829812                  52  ...      204   F#   \n",
+              "376                  0  663832097                 182  ...      202    G   \n",
+              "856                  4  726434358                  69  ...      202   A#   \n",
+              "\n",
+              "      mode danceability_%  valence_% energy_% acousticness_%  \\\n",
+              "456  Major             43         50       55             50   \n",
+              "881  Minor             58         83       45             36   \n",
+              "421  Major             52         52       68             46   \n",
+              "376  Major             24         76       60             77   \n",
+              "856  Major             34         25       51             69   \n",
+              "\n",
+              "     instrumentalness_%  liveness_%  speechiness_%  \n",
+              "456                   0          15             10  \n",
+              "881                   0          11              8  \n",
+              "421                   0          15              4  \n",
+              "376                   0          12              4  \n",
+              "856                   0          18              4  \n",
+              "\n",
+              "[5 rows x 24 columns]"
+            ],
+            "text/html": [
+              "\n",
+              "  <div id=\"df-ed0e7dff-2172-4d9b-8dae-f5e2b96181ef\" class=\"colab-df-container\">\n",
+              "    <div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>track_name</th>\n",
+              "      <th>artist(s)_name</th>\n",
+              "      <th>artist_count</th>\n",
+              "      <th>released_year</th>\n",
+              "      <th>released_month</th>\n",
+              "      <th>released_day</th>\n",
+              "      <th>in_spotify_playlists</th>\n",
+              "      <th>in_spotify_charts</th>\n",
+              "      <th>bpm</th>\n",
+              "      <th>in_apple_playlists</th>\n",
+              "      <th>...</th>\n",
+              "      <th>streams</th>\n",
+              "      <th>key</th>\n",
+              "      <th>mode</th>\n",
+              "      <th>danceability_%</th>\n",
+              "      <th>valence_%</th>\n",
+              "      <th>energy_%</th>\n",
+              "      <th>acousticness_%</th>\n",
+              "      <th>instrumentalness_%</th>\n",
+              "      <th>liveness_%</th>\n",
+              "      <th>speechiness_%</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>456</th>\n",
+              "      <td>Lover</td>\n",
+              "      <td>Taylor Swift</td>\n",
+              "      <td>1</td>\n",
+              "      <td>2012</td>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>8448</td>\n",
+              "      <td>23</td>\n",
+              "      <td>882831184</td>\n",
+              "      <td>160</td>\n",
+              "      <td>...</td>\n",
+              "      <td>206</td>\n",
+              "      <td>G</td>\n",
+              "      <td>Major</td>\n",
+              "      <td>43</td>\n",
+              "      <td>50</td>\n",
+              "      <td>55</td>\n",
+              "      <td>50</td>\n",
+              "      <td>0</td>\n",
+              "      <td>15</td>\n",
+              "      <td>10</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>881</th>\n",
+              "      <td>We Don't Talk About Bruno</td>\n",
+              "      <td>Adassa, Mauro Castillo, Stephanie Beatriz, Enc...</td>\n",
+              "      <td>7</td>\n",
+              "      <td>2021</td>\n",
+              "      <td>11</td>\n",
+              "      <td>19</td>\n",
+              "      <td>2785</td>\n",
+              "      <td>0</td>\n",
+              "      <td>432719968</td>\n",
+              "      <td>95</td>\n",
+              "      <td>...</td>\n",
+              "      <td>206</td>\n",
+              "      <td>NaN</td>\n",
+              "      <td>Minor</td>\n",
+              "      <td>58</td>\n",
+              "      <td>83</td>\n",
+              "      <td>45</td>\n",
+              "      <td>36</td>\n",
+              "      <td>0</td>\n",
+              "      <td>11</td>\n",
+              "      <td>8</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>421</th>\n",
+              "      <td>Last Night</td>\n",
+              "      <td>Morgan Wallen</td>\n",
+              "      <td>1</td>\n",
+              "      <td>2023</td>\n",
+              "      <td>1</td>\n",
+              "      <td>31</td>\n",
+              "      <td>2420</td>\n",
+              "      <td>19</td>\n",
+              "      <td>429829812</td>\n",
+              "      <td>52</td>\n",
+              "      <td>...</td>\n",
+              "      <td>204</td>\n",
+              "      <td>F#</td>\n",
+              "      <td>Major</td>\n",
+              "      <td>52</td>\n",
+              "      <td>52</td>\n",
+              "      <td>68</td>\n",
+              "      <td>46</td>\n",
+              "      <td>0</td>\n",
+              "      <td>15</td>\n",
+              "      <td>4</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>376</th>\n",
+              "      <td>It's the Most Wonderful Time of the Year</td>\n",
+              "      <td>Andy Williams</td>\n",
+              "      <td>1</td>\n",
+              "      <td>1963</td>\n",
+              "      <td>10</td>\n",
+              "      <td>14</td>\n",
+              "      <td>8879</td>\n",
+              "      <td>0</td>\n",
+              "      <td>663832097</td>\n",
+              "      <td>182</td>\n",
+              "      <td>...</td>\n",
+              "      <td>202</td>\n",
+              "      <td>G</td>\n",
+              "      <td>Major</td>\n",
+              "      <td>24</td>\n",
+              "      <td>76</td>\n",
+              "      <td>60</td>\n",
+              "      <td>77</td>\n",
+              "      <td>0</td>\n",
+              "      <td>12</td>\n",
+              "      <td>4</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>856</th>\n",
+              "      <td>Until I Found You</td>\n",
+              "      <td>Stephen Sanchez</td>\n",
+              "      <td>1</td>\n",
+              "      <td>2021</td>\n",
+              "      <td>9</td>\n",
+              "      <td>1</td>\n",
+              "      <td>4427</td>\n",
+              "      <td>4</td>\n",
+              "      <td>726434358</td>\n",
+              "      <td>69</td>\n",
+              "      <td>...</td>\n",
+              "      <td>202</td>\n",
+              "      <td>A#</td>\n",
+              "      <td>Major</td>\n",
+              "      <td>34</td>\n",
+              "      <td>25</td>\n",
+              "      <td>51</td>\n",
+              "      <td>69</td>\n",
+              "      <td>0</td>\n",
+              "      <td>18</td>\n",
+              "      <td>4</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "<p>5 rows × 24 columns</p>\n",
+              "</div>\n",
+              "    <div class=\"colab-df-buttons\">\n",
+              "\n",
+              "  <div class=\"colab-df-container\">\n",
+              "    <button class=\"colab-df-convert\" onclick=\"convertToInteractive('df-ed0e7dff-2172-4d9b-8dae-f5e2b96181ef')\"\n",
+              "            title=\"Convert this dataframe to an interactive table.\"\n",
+              "            style=\"display:none;\">\n",
+              "\n",
+              "  <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewBox=\"0 -960 960 960\">\n",
+              "    <path d=\"M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z\"/>\n",
+              "  </svg>\n",
+              "    </button>\n",
+              "\n",
+              "  <style>\n",
+              "    .colab-df-container {\n",
+              "      display:flex;\n",
+              "      gap: 12px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert {\n",
+              "      background-color: #E8F0FE;\n",
+              "      border: none;\n",
+              "      border-radius: 50%;\n",
+              "      cursor: pointer;\n",
+              "      display: none;\n",
+              "      fill: #1967D2;\n",
+              "      height: 32px;\n",
+              "      padding: 0 0 0 0;\n",
+              "      width: 32px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert:hover {\n",
+              "      background-color: #E2EBFA;\n",
+              "      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);\n",
+              "      fill: #174EA6;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-buttons div {\n",
+              "      margin-bottom: 4px;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert {\n",
+              "      background-color: #3B4455;\n",
+              "      fill: #D2E3FC;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert:hover {\n",
+              "      background-color: #434B5C;\n",
+              "      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);\n",
+              "      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));\n",
+              "      fill: #FFFFFF;\n",
+              "    }\n",
+              "  </style>\n",
+              "\n",
+              "    <script>\n",
+              "      const buttonEl =\n",
+              "        document.querySelector('#df-ed0e7dff-2172-4d9b-8dae-f5e2b96181ef button.colab-df-convert');\n",
+              "      buttonEl.style.display =\n",
+              "        google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
+              "\n",
+              "      async function convertToInteractive(key) {\n",
+              "        const element = document.querySelector('#df-ed0e7dff-2172-4d9b-8dae-f5e2b96181ef');\n",
+              "        const dataTable =\n",
+              "          await google.colab.kernel.invokeFunction('convertToInteractive',\n",
+              "                                                    [key], {});\n",
+              "        if (!dataTable) return;\n",
+              "\n",
+              "        const docLinkHtml = 'Like what you see? Visit the ' +\n",
+              "          '<a target=\"_blank\" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'\n",
+              "          + ' to learn more about interactive tables.';\n",
+              "        element.innerHTML = '';\n",
+              "        dataTable['output_type'] = 'display_data';\n",
+              "        await google.colab.output.renderOutput(dataTable, element);\n",
+              "        const docLink = document.createElement('div');\n",
+              "        docLink.innerHTML = docLinkHtml;\n",
+              "        element.appendChild(docLink);\n",
+              "      }\n",
+              "    </script>\n",
+              "  </div>\n",
+              "\n",
+              "\n",
+              "    <div id=\"df-0a7b51d1-1340-44be-bd3a-a55614202b3b\">\n",
+              "      <button class=\"colab-df-quickchart\" onclick=\"quickchart('df-0a7b51d1-1340-44be-bd3a-a55614202b3b')\"\n",
+              "                title=\"Suggest charts\"\n",
+              "                style=\"display:none;\">\n",
+              "\n",
+              "<svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\"viewBox=\"0 0 24 24\"\n",
+              "     width=\"24px\">\n",
+              "    <g>\n",
+              "        <path d=\"M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z\"/>\n",
+              "    </g>\n",
+              "</svg>\n",
+              "      </button>\n",
+              "\n",
+              "<style>\n",
+              "  .colab-df-quickchart {\n",
+              "      --bg-color: #E8F0FE;\n",
+              "      --fill-color: #1967D2;\n",
+              "      --hover-bg-color: #E2EBFA;\n",
+              "      --hover-fill-color: #174EA6;\n",
+              "      --disabled-fill-color: #AAA;\n",
+              "      --disabled-bg-color: #DDD;\n",
+              "  }\n",
+              "\n",
+              "  [theme=dark] .colab-df-quickchart {\n",
+              "      --bg-color: #3B4455;\n",
+              "      --fill-color: #D2E3FC;\n",
+              "      --hover-bg-color: #434B5C;\n",
+              "      --hover-fill-color: #FFFFFF;\n",
+              "      --disabled-bg-color: #3B4455;\n",
+              "      --disabled-fill-color: #666;\n",
+              "  }\n",
+              "\n",
+              "  .colab-df-quickchart {\n",
+              "    background-color: var(--bg-color);\n",
+              "    border: none;\n",
+              "    border-radius: 50%;\n",
+              "    cursor: pointer;\n",
+              "    display: none;\n",
+              "    fill: var(--fill-color);\n",
+              "    height: 32px;\n",
+              "    padding: 0;\n",
+              "    width: 32px;\n",
+              "  }\n",
+              "\n",
+              "  .colab-df-quickchart:hover {\n",
+              "    background-color: var(--hover-bg-color);\n",
+              "    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);\n",
+              "    fill: var(--button-hover-fill-color);\n",
+              "  }\n",
+              "\n",
+              "  .colab-df-quickchart-complete:disabled,\n",
+              "  .colab-df-quickchart-complete:disabled:hover {\n",
+              "    background-color: var(--disabled-bg-color);\n",
+              "    fill: var(--disabled-fill-color);\n",
+              "    box-shadow: none;\n",
+              "  }\n",
+              "\n",
+              "  .colab-df-spinner {\n",
+              "    border: 2px solid var(--fill-color);\n",
+              "    border-color: transparent;\n",
+              "    border-bottom-color: var(--fill-color);\n",
+              "    animation:\n",
+              "      spin 1s steps(1) infinite;\n",
+              "  }\n",
+              "\n",
+              "  @keyframes spin {\n",
+              "    0% {\n",
+              "      border-color: transparent;\n",
+              "      border-bottom-color: var(--fill-color);\n",
+              "      border-left-color: var(--fill-color);\n",
+              "    }\n",
+              "    20% {\n",
+              "      border-color: transparent;\n",
+              "      border-left-color: var(--fill-color);\n",
+              "      border-top-color: var(--fill-color);\n",
+              "    }\n",
+              "    30% {\n",
+              "      border-color: transparent;\n",
+              "      border-left-color: var(--fill-color);\n",
+              "      border-top-color: var(--fill-color);\n",
+              "      border-right-color: var(--fill-color);\n",
+              "    }\n",
+              "    40% {\n",
+              "      border-color: transparent;\n",
+              "      border-right-color: var(--fill-color);\n",
+              "      border-top-color: var(--fill-color);\n",
+              "    }\n",
+              "    60% {\n",
+              "      border-color: transparent;\n",
+              "      border-right-color: var(--fill-color);\n",
+              "    }\n",
+              "    80% {\n",
+              "      border-color: transparent;\n",
+              "      border-right-color: var(--fill-color);\n",
+              "      border-bottom-color: var(--fill-color);\n",
+              "    }\n",
+              "    90% {\n",
+              "      border-color: transparent;\n",
+              "      border-bottom-color: var(--fill-color);\n",
+              "    }\n",
+              "  }\n",
+              "</style>\n",
+              "\n",
+              "      <script>\n",
+              "        async function quickchart(key) {\n",
+              "          const quickchartButtonEl =\n",
+              "            document.querySelector('#' + key + ' button');\n",
+              "          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.\n",
+              "          quickchartButtonEl.classList.add('colab-df-spinner');\n",
+              "          try {\n",
+              "            const charts = await google.colab.kernel.invokeFunction(\n",
+              "                'suggestCharts', [key], {});\n",
+              "          } catch (error) {\n",
+              "            console.error('Error during call to suggestCharts:', error);\n",
+              "          }\n",
+              "          quickchartButtonEl.classList.remove('colab-df-spinner');\n",
+              "          quickchartButtonEl.classList.add('colab-df-quickchart-complete');\n",
+              "        }\n",
+              "        (() => {\n",
+              "          let quickchartButtonEl =\n",
+              "            document.querySelector('#df-0a7b51d1-1340-44be-bd3a-a55614202b3b button');\n",
+              "          quickchartButtonEl.style.display =\n",
+              "            google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
+              "        })();\n",
+              "      </script>\n",
+              "    </div>\n",
+              "\n",
+              "    </div>\n",
+              "  </div>\n"
+            ],
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "dataframe"
+            }
+          },
+          "metadata": {},
+          "execution_count": 15
+        }
+      ],
+      "source": [
+        "!mkdir -p ./data/wk1\n",
+        "!curl https://storage.googleapis.com/qm2/wk1/spotify-2023.csv -o ./data/wk1/spotify-2023.csv\n",
+        "import pandas\n",
+        "spotify = pandas.read_csv('./data/wk1/spotify-2023.csv')\n",
+        "spotify.head()\n",
+        "spotify.sort_values(by='streams', ascending=False).head()"
+      ]
+    }
+  ],
+  "metadata": {
+    "colab": {
+      "name": "W1. Python Recap.ipynb",
+      "provenance": []
+    },
+    "kernelspec": {
+      "display_name": "Python 3.9.7 ('geo')",
+      "language": "python",
+      "name": "python3"
+    },
+    "language_info": {
+      "codemirror_mode": {
+        "name": "ipython",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.9.7"
+    },
+    "vscode": {
+      "interpreter": {
+        "hash": "8ee0682e3aec3eb14c273afe4405335ee3a64a018407db16d950813fa3a05036"
+      }
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
